@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--CDN de bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+      crossorigin="anonymous">
+      <script
+           src="https://code.jquery.com/jquery-3.5.0.min.js"
+           integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+           crossorigin="anonymous">
+      </script>
+</head>
+<body>
+    <div id="container"class="container">
+        <h1 style="padding-left:20px;padding-bottom: 10px;" 
+        class="bg-dark text-white my-4 display-5 col-md-6">Grupos de música...</h1>
+        <div id="setenta" class=" card card-body my-4 col-md-6">
+            <div class="internacional">
+                <h2>Internacionales</h2>
+                <p>ABBA</p>
+                <p>Beach Boys</p>
+                <p>Bee Gees</p>
+                <p>Led Zeppelin</p>
+                <p>Pink Floyd</p>
+            </div>
+            <div class="nacional">
+                <h2>Españoles</h2>
+                <p>Camilo Sesto</p>
+                <p>Miguel Rios</p>
+                <p>Mocedades</p>
+                <p>Nino Bravo</p>
+            </div>
+        </div>
+        <div id="ochenta" class=" card card-body my-4 col-md-6">
+            <div class="internacional">
+                <h2>Internacionales</h2>
+                <p>AC/DC</p>
+                <p>Aerosmith</p>
+                <p>Bon Jovi</p>
+                <p>The Cure</p>
+                <p>Europe</p>
+                <p>Motörhead</p>
+                <p>Supertramp</p>
+            </div>
+            <div class="nacional">
+                <h2>Españoles</h2>
+                <p>Alaska y Dinarama</p>
+                <p>Barricada</p>
+                <p id="heroes">Héroes del Silencio</p>
+                <p>Mecano</p>
+                <p>Radio Futura</p>
+            </div>
+        </div>
+        <div id="noventa" class=" card card-body my-4 col-md-6">
+            <div class="internacional">
+                <h2>Internacionales</h2>
+                <p>Back Street Boys</p>
+                <p>The Cardigans</p>
+                <p>Daft Punk</p>
+                <p>Evanescence</p>
+                <p>Foo Fighters</p>
+                <p>Marilyn Manson</p>
+            </div>
+            <div class="nacional">
+                <h2>Españoles</h2>
+                <p>Amaral</p>
+                <p>Extremoduro</p>
+                <p>La Fuga</p>
+                <p>Los fresones rebeldes</p>
+            </div>
+        </div>
+     </div>
+    <script>
+        $(document).ready(function () {
+
+            //creo unas variables para donde llamo a los divs de las decadas musicales
+            var setenta = $('#setenta');
+            var ochenta = $('#ochenta');
+            var noventa = $('#noventa');
+
+            //les añado unas clases con un valor igual a su ID .
+            $(setenta ).addClass('sesenta');
+            $(ochenta).addClass('ochenta');
+            $(noventa).addClass('noventa');
+
+            //obtengo el div del tipo de musica y de la epoca en la que se ubica #heroes
+            $('#heroes').parentsUntil('#container');
+
+            //llamo a los hermanos de heroes y los guardo en una variable para trabajar con ellos
+            var first = $('#heroes').nextAll().first();
+            var second = $('#heroes').nextAll().last();
+
+            //les agrego un id que es === a su html.val()
+            $(first).attr('id','mecano');
+            $(second).attr('id','radioFutura');
+
+            /*compruebo si ejecute bien lo anterior añadiendo unas clases de bootstrap-4
+            y comento la prueba para anular la instruccion*/
+            /*   $('#mecano').addClass('display-4');
+            $('#radioFutura').addClass('display-4');   */
+
+            //por ultimo añado el grupo queen dentro del grupo de los ochenta en internacional
+            var queen = $('<p>Queen</p>');
+            $(queen).appendTo('#ochenta .internacional');
+
+            //por ultimo añado unas clases de la paleta flatui.com
+            $(setenta).css({background:'#ecf0f1'});
+            $(ochenta).css({background:'#ecf0f1'});
+            $(noventa).css({background:'#ecf0f1'});
+        });
+    </script>
+</body>
+</html>
